@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-if示例</title>
+</head>
+<body>
+	<div  data-sel="pick">
+		<h3>vue.js里el的选择器可以类似jQuery</h3>
+		<p v-if="show">现在可以改变指令值来控制此&lt;p&gt;标签DOM的结构显示~~</p>
+	</div>
+	<script src="../lib/vue.js"></script>
+	<script>
+		var app3 = new Vue({
+			el: '[data-sel="pick"]',
+			data: {
+				show: true
+			}
+		})
+	</script>
+</body>
+</html>

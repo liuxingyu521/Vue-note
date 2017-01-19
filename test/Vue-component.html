@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue-component示例</title>
+</head>
+<body>
+	<div id="app7">
+		<h3>上午todo-list：</h3>
+		<ol type='i'>
+			<todo-list v-for="item in lists" v-bind:todo="item"></todo-list>
+		</ol>
+	</div>
+	<script src="../lib/vue.js"></script>
+	<script>
+		// 定义一个组件名字为： todo-list
+		Vue.component('todo-list', {
+			props:['todo'],
+			template: '<li>{{todo.text}}</li>'
+		});
+		var app7 = new Vue({
+			el: '#app7',
+			data: {
+				lists: [
+					{text: '5：30起床。'},
+					{text: '6：00跑步。'},
+					{text: '7：00吃早餐。'},
+					{text: '8：30开始工作。'}
+				]
+			}
+		}) 
+
+	</script>
+</body>
+</html>
