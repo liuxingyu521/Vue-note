@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-if v-else</title>
+</head>
+<body>
+	<div id="container">
+		<h1 v-if="ok">Yes</h1>
+		<h1 v-else>No</h1>
+		<button @click="changeStatus()">切换</button>
+	</div>
+	<script src="../lib/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el : '#container',
+			data : {
+				ok : false
+			},
+			methods : {
+				changeStatus : function(){
+					this.ok = !this.ok;
+				}
+			}
+		});
+	</script>
+</body>
+</html>

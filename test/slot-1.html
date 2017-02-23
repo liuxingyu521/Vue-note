@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>单个slot</title>
+</head>
+<body>
+	<div class="parent">
+		<h1>这是父组件的标题</h1>
+		<child-component>
+			<p>这是初始内容。。。。</p>
+		</child-component>
+	</div>
+	<script src="../lib/vue.js"></script>
+	<script>
+		var Child = {
+			template : '\
+				<div>\
+					<h2>这是子组件的标题</h2>\
+					<slot>\
+						只有没有被分发的内容是才会显示\
+					</slot>\
+				</div>\
+			'
+		};
+
+		var app = new Vue({
+			el : '.parent',
+			components : {
+				// 局部注册 子组件
+				'child-component' : Child
+			}
+		})
+	</script>
+</body>
+</html>

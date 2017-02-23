@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>过渡效果</title>
+    <style>
+    .slide-enter {
+        transform: translateX(30px);
+        opacity: 0;
+    }
+    
+    .slide-leave-active {
+        transform: translateY(30px);
+    }
+    
+    .slide-leave-active,
+    .slide-enter-active {
+        transition: all .3s ease;
+    }
+    
+    .animate-enter-active {
+        animation: scale-in 0.5s linear;
+    }
+    
+    .animate-leave-active {
+        animation: rotate-out 0.5s linear;
+    }
+    
+    @keyframes scale-in {
+        0% {
+            transform: scale(0);
+        }
+        50% {
+            transform: scale(3);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+    
+    @keyframes rotate-out {
+        0% {
+            transform: rotateZ(0deg) scale(1);
+        }
+        50% {
+            transform: rotateZ(360deg) scale(2);
+        }
+        100% {
+            transform: rotateZ(720deg) scale(0);
+        }
+    }
+    
+    p {
+        text-align: center;
+    }
+    
+    .row {
+        height: 100px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <button @click="fSlide = !fSlide">滑动 toggle</button>
+            <transition name="slide">
+                <p v-if="fSlide">滑动效果...</p>
+            </transition>
+        </div>
+        <div class="row">
+            <button @click="fAnimate = !fAnimate">动画 toggle</button>
+            <transition name="animate">
+                <p v-if="fAnimate">动画效果...</p>
+            </transition>
+        </div>
+    </div>
+    <script src="../lib/vue.js"></script>
+    <script>
+    var app = new Vue({
+        el: '.container',
+        data: {
+            fSlide: true,
+            fAnimate: true
+        }
+    })
+    </script>
+</body>
+
+</html>
